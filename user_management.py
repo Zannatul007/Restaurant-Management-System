@@ -1,9 +1,17 @@
+from restaurant import *
+
+
 class Dish:
     def __init__(self, d_id, name, quantity: int, price: float):
         self.id = d_id
         self.name = name
         self.quantity = quantity
         self.price = price
+
+    def __str__(self):
+        return "Dish name : {},Quantity : {}, Price : {} ".format(
+            self.name, self.quantity, self.price
+        )
 
 
 class Order:
@@ -30,6 +38,9 @@ class Order:
             price += dish.price * dish.quantity
         print("Total Price {}".format(price))
 
+    def __str__(self):
+        return "{}'s status is {}".format(self.order_id, self.status)
+
 
 class Reservation:
     def __init__(self, reservation_id, seats, date, time_slot):
@@ -51,29 +62,43 @@ class User:
         self.email = email
         self.password = password
         self.role = role
+
         self.orders = []
         self.reservations = []
 
     def book_reservation(self, restaurant, reservation: Reservation):
-        restaurant.add_reservations(reservation)
+        restaurant.add_reservations(self, reservation)
 
-    def update_reservation(self, restaurant, reservation: Reservation):
-        pass
+    def update_reservation(
+        self, restaurant, reservation: Reservation, seat, time_slot, date
+    ):
+        restaurant.update_reservation(
+            self, restaurant, reservation, seat, time_slot, date
+        )
+
+    def delete_reservation(self, restaurant):
+        restaurant.delete_reservation(self)
 
     def place_order(self, order):
-        # self.orders[customer_id].append(order)
-        pass
+        self.orders.append(order)
+
+    def view_order(self):
+        for i, order in enumerate(self.orders):
+            print("{} \t {}".format(i, order.details_order()))
 
 
 class Chef(User):
     def __init__(self, uid, name, email, password):
         super().__init__(uid, name, email, password, role="Chef")
 
-        def view_status(self, customer_id, order):
-            pass
+    def view_status(self, customer: User, order: Order):
+        for order in customer.orders:
+            print("The status of order is {}".format(order.status))
 
-        def update_status(self, customer_id, order):
-            pass
+    def update_status(self, customer: User, order: Order, status):
+        for order in customer.orders:
+            order.status = status
+            print("Updated order of {} list is {}".format(customer.name, order))
 
 
 class Waiter(User):
@@ -162,3 +187,7 @@ class Restaurant:
         print("***All reservations details***")
         for key, reservation in self.reservations.items():
             print("{} is booked for {}".format(reservation, self.members[key].name))
+
+    def add_orders(self, customer: User, order: Order):
+        if customer.id in self.members:
+            self.orders[customer.id] = order
