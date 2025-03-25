@@ -82,9 +82,9 @@ class User:
     def place_order(self, order):
         self.orders.append(order)
 
-    def view_order(self):
-        for i, order in enumerate(self.orders):
-            print("{} \t {}".format(i, order.details_order()))
+    # def view_order(self, restaurant):
+    #     for i, order in enumerate(restaurant.orders):
+    #         print("{} \t {}".format(i, order.details_order()))
 
 
 class Chef(User):
@@ -101,15 +101,15 @@ class Chef(User):
             print("Updated order of {} list is {}".format(customer.name, order))
 
 
-class Waiter(User):
-    def __init__(self, uid, name, email, password):
-        super().__init__(uid, name, email, password, role="Waiter")
+# class Waiter(User):
+#     def __init__(self, uid, name, email, password):
+#         super().__init__(uid, name, email, password, role="Waiter")
 
-        def take_order(self, customer_id, order):
-            pass
+#         def take_order(self, customer, order):
 
-        def update_order(self, customer_id, order):
-            pass
+
+#         def update_order(self, customer_id, order):
+#             pass
 
 
 class Admin(User):
@@ -122,6 +122,7 @@ class Restaurant:
         self.orders = {}
         self.reservations = {}
 
+    # User management
     def register_member(self, user: User):
         if user.id in self.members:
             print("User is already exist as a {}".format(user.role))
@@ -153,6 +154,7 @@ class Restaurant:
         else:
             print("User doesn't exist")
 
+    ##Reservation Management
     def update_reservation(
         self,
         customer: User,
@@ -191,3 +193,14 @@ class Restaurant:
     def add_orders(self, customer: User, order: Order):
         if customer.id in self.members:
             self.orders[customer.id] = order
+
+    # Order Management
+    def add_orders(self, customer: User, order: Order):
+        if customer.id in self.members:
+            self.orders[customer.id] = order
+        else:
+            print("User doesn't exist")
+
+    def show_orders(self):
+        for key, order in self.orders():
+            print("{} {}".format(self.members[key].name, order))

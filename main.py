@@ -26,8 +26,9 @@ restaurant1.add_reservations(user2, reservation1)
 restaurant1.add_reservations(user2, reservation2)
 restaurant1.view_reservations()
 user1.place_order(order)
+
 print("**---**")
-user1.view_order()
+# user1.view_order(restaurant1)
 
 # restaurant1.add_orders(user1, order)
 # restaurant1.
