@@ -1,83 +1,66 @@
-Restaurant Management System 
-Documentation 
-1. User Interface: 
-Command-Line Interface (CLI): 
-● Users interact with the system through a CLI. 
-● The interface provides clear instructions and prompts to guide users through various 
-operations. 
-● Implement menus for different functionalities (e.g., Order Management, Menu 
-Management, Staff Management). 
-2. User Authentication: 
-Registration: 
-● Users can register by providing a username and password. 
-● Passwords should be stored securely using hashing techniques. 
-Login: 
-● Users log in using their registered credentials. 
-● Implement a session mechanism to maintain user login status during the session. 
-Roles: 
-● Define roles such as Admin, Chef, Waiter, and Customer. 
-○ Admins have full access to all features. 
-○ Chefs can view and update order statuses. 
-○ Waiters can take and manage customer orders. 
-○ Customers can place and track their orders. 
-3. Menu Management: 
-Add New Dishes: 
-● Admins can add new dishes to the restaurant menu. 
-● Required details: dish name, category (e.g., appetizer, main course, dessert), price, 
-availability status. 
-Update Dish Details: 
-● Admins can update details of existing dishes (e.g., change price, availability status, 
-description). 
-Delete Dishes: 
-● Admins can remove dishes that are no longer available. 
-Search and View Menu: 
-● Customers and staff can search for dishes by name, category, or price range. 
-● Display relevant dish details in search results. 
-4. Order Management: 
-Placing Orders: 
-● Customers can place orders from the available menu. 
-● Orders should include customer ID, dish IDs, quantity, total price, and order status. 
-● Generate a unique order ID for each order. 
-Updating Orders: 
-● Waiters can update the status of orders (e.g., "In Progress", "Ready", "Served"). 
-● Chefs can view and mark orders as "Prepared" when ready. 
-Viewing Order History: 
-● Customers can view their previous orders. 
-● Admins and waiters can track ongoing and past orders. 
-5. Staff Management: 
-Add New Staff Members: 
-● Admins can register new staff members. 
-● Required details: name, contact information, role, employee ID. 
-Update Staff Information: 
-● Admins can update staff details (e.g., change role, update contact information). 
-Remove Staff Members: 
-● Admins can remove staff from the system if they leave the restaurant. 
-6. Table Reservation: 
-Booking Tables: 
-● Customers can book tables in advance. 
-● Required details: customer ID, number of seats, date, time slot. 
-Updating Reservations: 
-● Customers can modify or cancel their reservations. 
-● Admins can manage and update reservations. 
-Viewing Reservations: 
-● Staff can view all reservations for better seating arrangements. 
-7. Billing and Payments: 
-Generating Bills: 
-● The system calculates the total bill based on ordered dishes and applicable taxes. 
-● Generate an invoice with order details and payment status. 
-Payment Processing: 
-● Customers can pay via cash, credit/debit cards, or online payment methods. 
-● Update the system once payment is completed. 
-Applying Discounts: 
-● Admins can apply special discounts or promotional offers. 
-8. Reporting and Analytics: 
-Sales Reports: 
-● Admins can generate reports on daily, weekly, or monthly sales. 
-Order Trends: 
-● Analyze most popular dishes and peak order times. 
-Customer Insights: 
-● Track frequent customers and their preferred dishes. 
-Conclusion: 
-This Restaurant Management System efficiently handles orders, menu, staff, reservations, 
-and billing to streamline restaurant operations. It ensures a smooth experience for both 
-customers and staff members while maintaining effective business management.
+# 🍽️ Restaurant Management System
+
+## 📌 Overview
+The **Restaurant Management System** is a command-line interface (CLI) application designed to streamline restaurant operations, including order management, menu management, staff handling, table reservations, and billing.
+
+---
+## 🔹 Features
+
+### 1️⃣ User Interface
+- Command-Line Interface (CLI) for seamless interaction.
+- Clear instructions and prompts for user guidance.
+- Menu-based navigation for different functionalities (e.g., Orders, Menu, Staff Management).
+
+### 2️⃣ User Authentication
+#### ✅ Registration
+- Users register with a **username** and **password**.
+- Secure password storage using hashing.
+
+#### 🔑 Login
+- Users log in with their registered credentials.
+- Session mechanism to maintain login status.
+
+#### 🎭 User Roles
+- **Admin:** Full access to all features.
+- **Chef:** View and update order statuses.
+- **Waiter:** Take and manage customer orders.
+- **Customer:** Place and track their orders.
+
+### 3️⃣ Menu Management
+- **Add New Dishes:** Admins can add dishes with details like name, category, price, and availability.
+- **Update Dish Details:** Modify price, availability, or description.
+- **Delete Dishes:** Remove unavailable dishes.
+- **Search and View Menu:** Customers and staff can search dishes by name, category, or price range.
+
+### 4️⃣ Order Management
+- **Placing Orders:** Customers order from the menu, generating unique order IDs.
+- **Updating Orders:**
+  - Waiters update order statuses (e.g., "In Progress", "Served").
+  - Chefs mark orders as "Prepared" when ready.
+- **Viewing Order History:**
+  - Customers can track past orders.
+  - Admins and waiters can view ongoing and past orders.
+
+### 5️⃣ Staff Management
+- **Add New Staff Members:** Register employees with name, contact, role, and employee ID.
+- **Update Staff Information:** Modify details like role or contact info.
+- **Remove Staff Members:** Remove employees when necessary.
+
+### 6️⃣ Table Reservation
+- **Booking Tables:** Customers reserve tables by providing date, time, and number of seats.
+- **Updating Reservations:** Modify or cancel reservations.
+- **Viewing Reservations:** Staff can see all bookings for efficient seating.
+
+### 7️⃣ Billing and Payments
+- **Generating Bills:** Auto-calculate total cost including taxes.
+- **Payment Processing:** Support cash, card, and online payments.
+- **Applying Discounts:** Admins can add promotions or discounts.
+
+### 8️⃣ Reporting and Analytics
+- **Sales Reports:** Generate daily, weekly, and monthly reports.
+- **Order Trends:** Identify most-ordered dishes and peak hours.
+- **Customer Insights:** Track frequent customers and preferences.
+
+---
+## 🏁 Conclusion
+This **Restaurant Management System** simplifies restaurant workflows, ensuring smooth operations for both customers and staff while improving overall efficiency.
