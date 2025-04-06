@@ -27,7 +27,7 @@ class Order:
         price = 0
         for index, dish in enumerate(self.dishes):
             print(
-                "{:<5} {:<20} {:<10} {:<10} {:<10}".format(
+                "{:5} {:20} {:10} {:10} {:10}".format(
                     index + 1,
                     dish.name,
                     dish.quantity,
@@ -113,7 +113,24 @@ class Chef(User):
 
 
 class Admin(User):
-    pass
+    def __init__(
+        self,
+        uid,
+        name,
+        email,
+        password,
+    ):
+        staffs = []
+        super().__init__(uid, name, email, password, role="Admin")
+
+    def add_staffs(self, restaurant, user: User):
+        restaurant.register_member(user)
+
+    def update_staff(self, restaurant, user: User):
+        restaurant.update_user(user, user.role, user.email)
+    
+    def remove_staff(self,restaurant,user: User):
+        restaurant.delete_user(user)
 
 
 class Restaurant:
@@ -128,7 +145,7 @@ class Restaurant:
             print("User is already exist as a {}".format(user.role))
         else:
             self.members[user.id] = user
-            print("{} is successfully registered".format(user.name))
+            print("{} is successfully registered as {}".format(user.name, user.role))
 
     def verify_member(self, user: User, name, password):
         if user.id in self.members:
@@ -139,6 +156,24 @@ class Restaurant:
                 print("Invalid password or username")
         else:
             print("User doesn't exist")
+
+    def update_user(self, user: User, role=None, contact_info=None):
+        if user.id not in self.members:
+            print("User does not exist")
+            return
+        if role:
+            self.members[user.id].role = role
+        if contact_info:
+            self.members[user.id].email = contact_info
+
+    def delete_user(self, user: User):
+        if user.id not in self.members:
+            print("User doesn't exist")
+        else:
+            print(
+                "{} is removed of customer {}".format(self.members[user.id], user.name)
+            )
+            del self.members[user.id]
 
     def add_reservations(self, customer: User, reservation: Reservation):
         if customer.id in self.members:
@@ -167,7 +202,7 @@ class Restaurant:
             print("Reservation doesn't exist")
             return
         if seat:
-            self.reservations[customer.id].seats = seat
+            self.reservations[customer.id].seat = seat
         if time_slot:
             self.reservations[customer.id].time_slot = time_slot
         if date:
