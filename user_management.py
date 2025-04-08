@@ -102,8 +102,8 @@ class User:
 
 
 class Chef(User):
-    def __init__(self, uid, name, email, password):
-        super().__init__(uid, name, email, password, role="Chef")
+    def __init__(self, u_id, name, email, password):
+        super().__init__(u_id, name, email, password, role="Chef")
 
     def view_status(self, customer, order):
         for order in customer.orders:
@@ -116,8 +116,8 @@ class Chef(User):
 
 
 # class Waiter(User):
-#     def __init__(self, uid, name, email, password):
-#         super().__init__(uid, name, email, password, role="Waiter")
+#     def __init__(self, u_id, name, email, password):
+#         super().__init__(u_id, name, email, password, role="Waiter")
 
 #         def take_order(self, customer, order):
 
@@ -129,13 +129,13 @@ class Chef(User):
 class Admin(User):
     def __init__(
         self,
-        uid,
+        u_id,
         name,
         email,
         password,
     ):
         staffs = []
-        super().__init__(uid, name, email, password, role="Admin")
+        super().__init__(u_id, name, email, password, role="Admin")
 
     def add_staffs(self, restaurant, user):
         restaurant.register_member(user)
